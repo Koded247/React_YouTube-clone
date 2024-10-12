@@ -26,7 +26,7 @@ function Navbar() {
           </button>
         </div>
         <div className="flex-1">
-          <a className="btn btn-ghost text-xl">Youtube</a>
+          <a className="btn btn-ghost text-xl"><span className="text-lime-400">Koded</span>Tube</a>
         </div>
       </div>
       <div className="navbar-center">
