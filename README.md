@@ -60,7 +60,7 @@ My YouTube Clone (KodedTube) Features
 ## Author
 
 - AKOREDE ABIDOYE T.
-email: korexcoded@gmail.com
+Email: korexcoded@gmail.com
 
 
 
