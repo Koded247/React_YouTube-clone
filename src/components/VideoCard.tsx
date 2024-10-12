@@ -1,4 +1,5 @@
 import { LucideMoreVertical } from "lucide-react";
+import React from "react";
 
 type T_VideoCard = {
   videoThumbnail: string;
@@ -9,7 +10,9 @@ type T_VideoCard = {
   views: string;
   uploadTime: string;
 };
-export function IconView({ icon }: { icon: never }) {
+
+// Corrected: icon should be ReactNode, not never
+export function IconView({ icon }: { icon: React.ReactNode }) {
   return (
     <div className="avatar">
       <div className="bg-neutral text-neutral-content w-8 h-8 leading-8 rounded-full text-center">
@@ -20,6 +23,7 @@ export function IconView({ icon }: { icon: never }) {
     </div>
   );
 }
+
 function VideoCard({
   videoThumbnail,
   videoOwnerDp,
@@ -31,35 +35,35 @@ function VideoCard({
 }: T_VideoCard) {
   const menuItems = [
     {
-      icon: <IconView icon={""} />,
+      icon: <IconView icon={null} />, // Use null instead of an empty string for icons
       text: "Add to queue",
     },
     {
-      icon: <IconView icon={""} />,
+      icon: <IconView icon={null} />,
       text: "Save to Watch later",
     },
     {
-      icon: <IconView icon={""} />,
+      icon: <IconView icon={null} />,
       text: "Save to playlist",
     },
     {
-      icon: <IconView icon={""} />,
+      icon: <IconView icon={null} />,
       text: "Download",
     },
     {
-      icon: <IconView icon={""} />,
+      icon: <IconView icon={null} />,
       text: "Share",
     },
     {
-      icon: <IconView icon={""} />,
+      icon: <IconView icon={null} />,
       text: "Not interested",
     },
     {
-      icon: <IconView icon={""} />,
-      text: "Don't recomment channel",
+      icon: <IconView icon={null} />,
+      text: "Don't recommend channel",
     },
     {
-      icon: <IconView icon={""} />,
+      icon: <IconView icon={null} />,
       text: "Report",
     },
   ];
@@ -72,7 +76,7 @@ function VideoCard({
             videoThumbnail ||
             "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
           }
-          alt="Shoes"
+          alt={videoTitle || "Video Thumbnail"}
           className="rounded-box w-full h-64 object-cover"
         />
       </figure>
@@ -88,8 +92,8 @@ function VideoCard({
             <div className="avatar">
               <div className="bg-neutral text-neutral-content w-8 h-8 leading-8 rounded-full text-center ring-primary ring-offset-base-100 ring-0 ring-offset-2">
                 <img
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                  alt=""
+                  src={videoOwnerDp} // Use dynamic value for owner's profile picture
+                  alt={videoOwnerName}
                 />
               </div>
             </div>
@@ -123,15 +127,15 @@ function VideoCard({
               className="dropdown-content menu bg-base-300 rounded-box z-[1] w-72 p-2 shadow"
             >
               {menuItems.map((eachMenuItem, index) => (
-                <>
-                  {index == 5 && <div className="divider"></div>}
-                  <li key={index}>
+                <React.Fragment key={index}>
+                  {index === 5 && <div className="divider"></div>}
+                  <li>
                     <a className="flex flex-row items-center gap-x-4 px-1">
                       {eachMenuItem.icon}
                       <span>{eachMenuItem.text}</span>
                     </a>
                   </li>
-                </>
+                </React.Fragment>
               ))}
             </ul>
           </div>
