@@ -9,7 +9,7 @@ import {
 import Footer from "./Footer";
 
 type TListItem = {
-  icon: React.ReactNode; // Allow JSX elements, not just strings
+  icon: React.ReactNode; 
   name: string;
 };
 

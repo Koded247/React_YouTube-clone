@@ -12,6 +12,7 @@ type T_VideoCard = {
 };
 
 // Corrected: icon should be ReactNode, not never
+
 export function IconView({ icon }: { icon: React.ReactNode }) {
   return (
     <div className="avatar">
